@@ -46,4 +46,28 @@
 
 <h3>APIs/HTML</h3>
 
+<p>No projeto foram usados dois APIs do Brasil API para CPTEC e Estados, e a URL de Wikipedia com uma tabela com os códigos ICAO para os aeroportos do Brasil</p>
+
+<h4>Aeroportos</h4>
+
+##### Retorna um arquivo HTML com a tabela dos aeroportos do Brasil com seus códigos ICAO
+```
+https://pt.wikipedia.org/wiki/Lista_de_aeroportos_do_Brasil_por_c%C3%B3digo_aeroportu%C3%A1rio_ICAO)https://pt.wikipedia.org/wiki/Lista_de_aeroportos_do_Brasil_por_c%C3%B3digo_aeroportu%C3%A1rio_ICAO
+```
+
+<h4>CPTEC</h4>
+
+##### Retorna um arquivo JSON com as condições climáticas dos aeroportos atualizadas
+
+```
+https://brasilapi.com.br/api/cptec/v1/clima/capital
+```
+<h4>Estados</h4>
+
+##### Retorna um dicionário com os dados de cada estado, mas precissa ser passado o código UF ja que só retorna um estado por consulta.
+
+```
+https://brasilapi.com.br/api/ibge/uf/v1/{code}
+```
+
 <hr>
