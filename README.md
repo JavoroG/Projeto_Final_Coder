@@ -34,7 +34,7 @@
 
 <h3>Arquivos do projeto:</h3>
 <ul>
-  <li>functionsjv.py</li>
+  <li>functionsjv.py</li> <p>Contém as funções que permiten criar a base estados, fazer o tratamento das bases, salvar no .csv e criar as tabelas</p>
   <li>validar.py</li>
   <li>reqhtml.py</li>
 </ul>
