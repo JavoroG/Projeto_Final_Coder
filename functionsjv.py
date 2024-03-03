@@ -26,6 +26,15 @@ def tratamento_aeroporto(df, lista):
     #drop para remover a coluna localizacao ja que temos 2 novas colunas com cidade e uf.
     df = df.drop(['localizacao'], axis=1)
     lista.append('Tratamento feito: Coluna localicao removida pra deixar as colunas cidade e uf')
+
+    #Eliminar acentos
+    df = df.map(lambda x: x.replace('á', 'a') if isinstance(x, str) else x)
+    df = df.map(lambda y: y.replace('é', 'e') if isinstance(y, str) else y)
+    df = df.map(lambda z: z.replace('í', 'i') if isinstance(z, str) else z)
+    df = df.map(lambda w: w.replace('ó', 'o') if isinstance(w, str) else w)
+    df = df.map(lambda v: v.replace('ú', 'u') if isinstance(v, str) else v)
+    lista.append('Tratamento feito: Acentos removidos')
+
     return df
 
 
@@ -38,6 +47,15 @@ def tratamento_cptec(df, lista):
     # Eliminando a coluna condicao
     df = df.drop(['condicao'], axis=1)
     lista.append('Tratamento feito: Coluna "condicao" eliminada do dataframe')
+
+    #Eliminar acentos
+    df = df.map(lambda x: x.replace('á', 'a') if isinstance(x, str) else x)
+    df = df.map(lambda y: y.replace('é', 'e') if isinstance(y, str) else y)
+    df = df.map(lambda z: z.replace('í', 'i') if isinstance(z, str) else z)
+    df = df.map(lambda w: w.replace('ó', 'o') if isinstance(w, str) else w)
+    df = df.map(lambda v: v.replace('ú', 'u') if isinstance(v, str) else v)
+    lista.append('Tratamento feito: Acentos removidos')
+    
     return df
 
 
@@ -50,6 +68,14 @@ def tratamento_estados(df, lista):
     #Se adiciona a nova coluna "nome_regiao" no dataframe df_estados.
     df['nome_regiao'] = nome_regiao
     lista.append('Tratamento feito: Se adicionou a coluna "nome_regiao" no dataframe df_estados')
+
+    #Eliminar acentos
+    df = df.map(lambda x: x.replace('á', 'a') if isinstance(x, str) else x)
+    df = df.map(lambda y: y.replace('é', 'e') if isinstance(y, str) else y)
+    df = df.map(lambda z: z.replace('í', 'i') if isinstance(z, str) else z)
+    df = df.map(lambda w: w.replace('ó', 'o') if isinstance(w, str) else w)
+    df = df.map(lambda v: v.replace('ú', 'u') if isinstance(v, str) else v)
+    lista.append('Tratamento feito: Acentos removidos')
 
     return df
 
