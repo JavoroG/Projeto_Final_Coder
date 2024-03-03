@@ -31,20 +31,21 @@
 > As bibliotecas acima devem ser importadas para poder utilizar suas clases.
 
 <hr>
+**([functionsjv.py](https://github.com/JavoroG/Projeto_Final_Coder/blob/main/functionsjv.py))**
 
 <h3>Arquivos do projeto:</h3>
 <ul>
   <li>
-    <strong>functionsjv.py</strong><p>Contém as funções que permitem criar a base de estados, realizar o tratamento das bases, salvar no formato .csv e criar as tabelas.</p>
+    <strong><a href = "https://github.com/JavoroG/Projeto_Final_Coder/blob/main/functionsjv.py">functionsjv.py</a></strong><p>Contém as funções que permitem criar a base de estados, realizar o tratamento das bases, salvar no formato .csv e criar as tabelas.</p>
   </li> 
   <li>
-    <strong>validar.py</strong> <p>Contém a função que valida se a conexão das URLs (APIs, HTML) foi bem-sucedida ou não e gera um alerta do Windows com os comentários.</p>
+    <strong><a href = "https://github.com/JavoroG/Projeto_Final_Coder/blob/main/validar.py">validar.py</a></strong> <p>Contém a função que valida se a conexão das URLs (APIs, HTML) foi bem-sucedida ou não e gera um alerta do Windows com os comentários.</p>
   </li>
   <li>
-    <strong>reqhtml.py</strong> <p>Contém uma função que extrai uma tabela no formato HTML, armazena os dados numa lista e retorna um dataframe com esses dados.</p>
+    <strong><a href = "https://github.com/JavoroG/Projeto_Final_Coder/blob/main/reqhtml.py">reqhtml.py</a></strong> <p>Contém uma função que extrai uma tabela no formato HTML, armazena os dados numa lista e retorna um dataframe com esses dados.</p>
   </li>
   <li>
-    <strong>requirements.txt</strong> <p>Contém as bibliotecas com suas respectivas versões utilizadas no projeto.</p>
+    <strong><a href = "https://github.com/JavoroG/Projeto_Final_Coder/blob/main/requirements.txt">requirements.txt</a></strong> <p>Contém as bibliotecas com suas respectivas versões utilizadas no projeto.</p>
   </li>
 </ul>
 
