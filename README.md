@@ -34,13 +34,18 @@
 
 <h3>Arquivos do projeto:</h3>
 <ul>
-  <li>functionsjv.py</li> <p>Contém as funções que permiten criar a base estados, fazer o tratamento das bases, salvar no .csv e criar as tabelas</p>
-  <li>validar.py</li>
-  <li>reqhtml.py</li>
+  <li><strong>functionsjv.py</strong><p>Contém as funções que permitem criar a base de estados, realizar o tratamento das bases, salvar no formato .csv e criar as tabelas.</p>
+  </li> 
+  <li>
+    <strong>validar.py</strong> <p>Contém a função que valida se a conexão das URLs (APIs, HTML) foi bem-sucedida ou não e gera um alerta do Windows com os comentários.</p>
+  </li>
+  <li>
+    <strong>reqhtml.py</strong> <p>Contém uma função que extrai dados de uma tabela no formato HTML e retorna um dataframe com esses dados.</p>
+  </li>
 </ul>
 
 > [!WARNING]
-> Os arquivos acime contém as funções necessarias para a validação, extração, tratamento e criação das tabelas extraídas dos APIs.
+> Os arquivos acima contém as funções necessarias para a validação, extração, tratamento e criação das tabelas, com os dados dos APIs.
 
 <hr>
 
