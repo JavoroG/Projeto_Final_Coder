@@ -87,6 +87,70 @@ https://brasilapi.com.br/api/ibge/uf/v1/{code}
 
 <hr>
 
+
+
+<hr>
+
 <h3>Testes</h3>
+
+<h4>Verificando APIs</h4>
+
+<p>Para verificar se a API está funcionando corretamente, chama-se a função 'conexao', passando a URL e uma lista chamada 'bases' como parâmetros.</p>
+
+<code>val.conexao(cptec, list, bases)</code> 
+
+<p>A função conexao realiza uma solicitação HTTP Get para a URL e se é bem sucedida o status code será 200. logo chama-se a função alerta</p>
+
+```
+def conexao(url, list, bases):
+    
+    req = requests.get(url)
+    code = req.status_code
+    list.append({url:code})
+    if bases != 0:
+        bases.append(req.json())
+    alerta(code, url, 'Extracao')    
+    return list
+```
+
+<p>A função alerta recebe o código da resposta http, a URL e uma etapa. A função alerta vai gerar uma notificação de Windows com o estatus da conexão do API</p>
+ 
+```
+def alerta(code, url, etapa):
+
+    now = (datetime.now())
+    data_hora = now.strftime("%d/%m/%y %H:%M:%S")
+    msg = f'Falha no carregamento da base {url} na etapa {etapa}. \n{data_hora}'
+    
+
+    if code == 200:
+        title = 'Conexão exitosa'
+        msg = f'Voce esta conectado na base {url}. \n{data_hora}'
+    elif code >= 400:
+        title = f'Não tem permissão de acessar na base: {url}'
+    elif code >= 500:
+        title = f'Erro de conexão com o server {url}'
+
+    notification.notify(
+        title = title,
+        message = msg,
+        app_name= 'Alerta',
+        timeout = 5
+    )
+```
+
+<h3>Tratamento do dados</h3>
+
+<p>Para verificar as informações dos dados se usa <code>df.info()</code> e para visualizar os 5 primeiros valores ou os 5 últimos, se usaram <code>df.head(5) ou df.tail(5)</code>. O seguinte foi verificado</p>
+
+<ul>
+  <li>Valores nulos</li>
+  <li>Colunas com campos combinados</li>
+  <li>Caracteres especiais</li>
+  <li>Remover acento</li>
+  <li>Colunas com datas</li>
+  <li>Eliminação de colunas</li>
+</ul>
+
 
 
