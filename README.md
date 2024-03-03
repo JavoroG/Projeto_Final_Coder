@@ -229,3 +229,5 @@ def tratamento_estados(df, lista):
 
     return df
 ```
+
+<p>Assim que os dados são processados, eles estão prontos para serem salvos no formato CSV e, posteriormente, em um banco de dados.</p>
