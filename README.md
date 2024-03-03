@@ -31,6 +31,7 @@
 > As bibliotecas acima devem ser importadas para poder utilizar suas clases.
 
 <hr>
+**([functionsjv.py](https://github.com/JavoroG/Projeto_Final_Coder/blob/main/functionsjv.py))**
 
 <h3>Arquivos do projeto:</h3>
 <ul>
