@@ -34,13 +34,17 @@
 
 <h3>Arquivos do projeto:</h3>
 <ul>
-  <li><strong>functionsjv.py</strong><p>Contém as funções que permitem criar a base de estados, realizar o tratamento das bases, salvar no formato .csv e criar as tabelas.</p>
+  <li>
+    <strong>functionsjv.py</strong><p>Contém as funções que permitem criar a base de estados, realizar o tratamento das bases, salvar no formato .csv e criar as tabelas.</p>
   </li> 
   <li>
     <strong>validar.py</strong> <p>Contém a função que valida se a conexão das URLs (APIs, HTML) foi bem-sucedida ou não e gera um alerta do Windows com os comentários.</p>
   </li>
   <li>
-    <strong>reqhtml.py</strong> <p>Contém uma função que extrai dados de uma tabela no formato HTML e retorna um dataframe com esses dados.</p>
+    <strong>reqhtml.py</strong> <p>Contém uma função que extrai uma tabela no formato HTML, armazena os dados numa lista e retorna um dataframe com esses dados.</p>
+  </li>
+  <li>
+    <strong>requirements.txt</strong> <p>Contém as bibliotecas com suas respectivas versões utilizadas no projeto.</p>
   </li>
 </ul>
 
