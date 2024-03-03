@@ -152,5 +152,80 @@ def alerta(code, url, etapa):
   <li>Eliminação de colunas</li>
 </ul>
 
+<p>cada base conta com uma função tratamento que executa as mudanças requeridas:</p>
 
+```
+  df_aeroporto_tratada = jv.tratamento_aeroporto(df_aeroporto, lista_tratamento)
+  df_cptec_tratada = jv.tratamento_cptec(df_cptec, lista_tratamentos_cptec)
+  df_estados_tratada = jv.tratamento_estados(df_estados, lista_tratamento_estados)
+```
 
+<p>As funções chamadas abaixo, ao ser chamadas, são executadas para cada tratamento requerido e retornam um dataframe</p>
+
+```
+def tratamento_aeroporto(df, lista):
+
+    # Na coluna localizacao a cidade e as siglas UF estão juntas, vamos separar as siglas e colocar numa coluna nova.
+    df[['cidade', 'uf']] = df['localizacao'].str.split("/", expand=True)
+    lista.append('Tratamento feito: Cidade e UF separados em duas colunas')
+
+    #Eliminar /n dos dados
+    df = df.map(lambda x: x.replace('\n', '') if isinstance(x, str) else x)
+    lista.append('Tratamento feito: Eliminar /n dos dados')
+
+    #drop para remover a coluna localizacao ja que temos 2 novas colunas com cidade e uf.
+    df = df.drop(['localizacao'], axis=1)
+    lista.append('Tratamento feito: Coluna localicao removida pra deixar as colunas cidade e uf')
+
+    #Eliminar acentos
+    df = df.map(lambda x: x.replace('á', 'a') if isinstance(x, str) else x)
+    df = df.map(lambda y: y.replace('é', 'e') if isinstance(y, str) else y)
+    df = df.map(lambda z: z.replace('í', 'i') if isinstance(z, str) else z)
+    df = df.map(lambda w: w.replace('ó', 'o') if isinstance(w, str) else w)
+    df = df.map(lambda v: v.replace('ú', 'u') if isinstance(v, str) else v)
+    lista.append('Tratamento feito: Acentos removidos')
+
+    return df
+--------------------------------------------------------------------------------------------------------
+    
+def tratamento_cptec(df, lista):
+
+    # Na coluna atualizado em se deve convertir em tipo date
+    df['atualizado_em'] = pd.to_datetime(df['atualizado_em'])
+    lista.append('Tratamento feito: Valores da coluna "atualizado em" mudados para tipo Datetime')
+
+    # Eliminando a coluna condicao
+    df = df.drop(['condicao'], axis=1)
+    lista.append('Tratamento feito: Coluna "condicao" eliminada do dataframe')
+
+    #Eliminar acentos
+    df = df.map(lambda x: x.replace('á', 'a') if isinstance(x, str) else x)
+    df = df.map(lambda y: y.replace('é', 'e') if isinstance(y, str) else y)
+    df = df.map(lambda z: z.replace('í', 'i') if isinstance(z, str) else z)
+    df = df.map(lambda w: w.replace('ó', 'o') if isinstance(w, str) else w)
+    df = df.map(lambda v: v.replace('ú', 'u') if isinstance(v, str) else v)
+    lista.append('Tratamento feito: Acentos removidos')
+    
+    return df
+-------------------------------------------------------------------------------------------------------
+
+def tratamento_estados(df, lista):
+
+    #Se usa list comprehension para extrair do dicionario o valor da chave "nome" que retorna o nome da regiao. Este valor se armazena na variável 'nome_regiao'
+    nome_regiao = [regiao['nome'] for regiao in df['regiao']]
+    lista.append('Tratamento feito: nome da regiao extraído e armazenado na variável nome_regiao')
+
+    #Se adiciona a nova coluna "nome_regiao" no dataframe df_estados.
+    df['nome_regiao'] = nome_regiao
+    lista.append('Tratamento feito: Se adicionou a coluna "nome_regiao" no dataframe df_estados')
+
+    #Eliminar acentos
+    df = df.map(lambda x: x.replace('á', 'a') if isinstance(x, str) else x)
+    df = df.map(lambda y: y.replace('é', 'e') if isinstance(y, str) else y)
+    df = df.map(lambda z: z.replace('í', 'i') if isinstance(z, str) else z)
+    df = df.map(lambda w: w.replace('ó', 'o') if isinstance(w, str) else w)
+    df = df.map(lambda v: v.replace('ú', 'u') if isinstance(v, str) else v)
+    lista.append('Tratamento feito: Acentos removidos')
+
+    return df
+```
