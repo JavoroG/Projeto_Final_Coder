@@ -86,3 +86,7 @@ https://brasilapi.com.br/api/ibge/uf/v1/{code}
 <img src="https://github.com/JavoroG/Projeto_Final_Coder/blob/main/Flowchart.png" alt="Descrição da Imagem"> 
 
 <hr>
+
+<h3>Testes</h3>
+
+
