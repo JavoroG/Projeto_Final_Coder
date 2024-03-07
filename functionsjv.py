@@ -4,7 +4,10 @@ import pandas as  pd
 
 #Função para criar uma lista com todos os dados dos estados do Brasil, que recebe a sigla e uma lista
 def retorna_estado(sigla, lista):
-
+    """
+        Esta função conecta com o API de Estados do Brasil e passa como parâmetro
+        a sigla UF para que retorne os dados de essa unidade federativa(UF) numa lista 
+    """
     estados = f"https://brasilapi.com.br/api/ibge/uf/v1/{sigla}"
     req = requests.get(estados)
     code = req.status_code
@@ -14,6 +17,12 @@ def retorna_estado(sigla, lista):
 
 
 def tratamento_aeroporto(df, lista):
+
+    """
+        Esta função realiza o tratamento requerido para a base Aeroporto, que neste caso
+        é separar dados da coluna localizacao, eliminar carácter /n, remover colunas, e remover
+        acentos das letras minúsculas
+    """
 
     # Na coluna localizacao a cidade e as siglas UF estão juntas, vamos separar as siglas e colocar numa coluna nova.
     df[['cidade', 'uf']] = df['localizacao'].str.split("/", expand=True)
@@ -40,6 +49,12 @@ def tratamento_aeroporto(df, lista):
 
 def tratamento_cptec(df, lista):
 
+    """
+        Esta função realiza o tratamento requerido para a base CPTEC. 
+        Muda o tipo de dado para date da 'coluna atalizado em', remove a 
+        coluna 'condicao', e remove o acento das letras minúsculas 
+    """
+
     # Na coluna atualizado em se deve convertir em tipo date
     df['atualizado_em'] = pd.to_datetime(df['atualizado_em'])
     lista.append('Tratamento feito: Valores da coluna "atualizado em" mudados para tipo Datetime')
@@ -60,6 +75,11 @@ def tratamento_cptec(df, lista):
 
 
 def tratamento_estados(df, lista):
+
+    """
+        Esta função usa list comprenhension para extrair o nome da região de um dicionario, 
+        cria uma nova coluna com o nome da regiã extraída, e e remove o acento das letras minúsculas
+    """
 
     #Se usa list comprehension para extrair do dicionario o valor da chave "nome" que retorna o nome da regiao. Este valor se armazena na variável 'nome_regiao'
     nome_regiao = [regiao['nome'] for regiao in df['regiao']]
@@ -82,6 +102,11 @@ def tratamento_estados(df, lista):
 
 def salvar_em_csv(listaDF, listaNome):
 
+    """
+        Esta função recebe uma lista con dataframes e outra lista com nomes tipo string, 
+        e cria um arquivo .csv com o nome requerido para cada dataframe da lista.
+    """
+
     ruta = "C:\\Temp"
 
     for df, i in zip(listaDF, listaNome):
@@ -92,6 +117,10 @@ def salvar_em_csv(listaDF, listaNome):
 
 
 def bd_tables(listaCSV, listaTable, conn):
+
+    """
+        Esta função recebe um arquivo .csv e o converte em uma tabela do banco de dados conectado.
+    """
 
     lista = [] #Lista para indicar que as tabelas foram criadas
     
