@@ -2,8 +2,15 @@ import requests
 import pandas as pd
 import bs4 as bs
 
-#Função que recebe uma URL HTML, conecta e extrai dados de uma tabela
+
 def basehtml(url):
+
+    """
+        Esta função conecta com a URL e extrai uma tabela, depois extrai
+        os dados requeridos dessa tabela e por último cria um dataframe
+        com os dado extraídos. 
+    """
+
     resp = requests.get(url)
     resp = resp.text
     soup = bs.BeautifulSoup(resp, 'lxml')

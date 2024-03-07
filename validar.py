@@ -6,6 +6,11 @@ from datetime import datetime
 
 def alerta(code, url, etapa):
 
+    """
+        A função de alerta gera uma notificação do Windows com o estado de uma conexão a uma URL, 
+        indicando sucesso se o código for igual a 200.
+    """
+
     now = (datetime.now())
     data_hora = now.strftime("%d/%m/%y %H:%M:%S")
     msg = f'Falha no carregamento da base {url} na etapa {etapa}. \n{data_hora}'
@@ -28,11 +33,16 @@ def alerta(code, url, etapa):
 
 def conexao(url, list, bases):
     
+    """
+        Esta função realiza a conexão com uma URL, pasa para o formato JSON
+        e chama a função alerta
+    """
+
     req = requests.get(url)
     code = req.status_code
     list.append({url:code})
     if bases != 0:
-        bases.append(req.json())
+        bases.append(req.json()) # Obtém os dados da resposta no formato JSON
     alerta(code, url, 'Extracao')    
     return list
 #, bases    
